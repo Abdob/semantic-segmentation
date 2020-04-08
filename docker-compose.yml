@@ -1,0 +1,15 @@
+version: '2.4'
+
+services:
+  semantic-segmentation: 
+    runtime: nvidia
+    container_name: semantic-segmentation
+    build:
+      context: .
+    ports:
+      - 8888:8888
+    volumes:
+      - $HOME/limo_data:/limo_data
+      - .:/semantic-segmentation
+    stdin_open: true
+    tty: true
