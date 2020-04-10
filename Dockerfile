@@ -23,3 +23,4 @@ RUN apt-get install libgtk2.0-dev -y && rm -rf /var/lib/apt/lists/*
 # Install Apex
 RUN cd /home/ && git clone https://github.com/NVIDIA/apex.git apex && cd apex && python setup.py install --cuda_ext --cpp_ext
 WORKDIR /home/
+CMD bash predict_kitti.sh
