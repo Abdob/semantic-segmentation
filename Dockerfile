@@ -21,6 +21,10 @@ RUN apt-get install libgtk2.0-dev -y && rm -rf /var/lib/apt/lists/*
 
 
 # Install Apex
-RUN cd /home/ && git clone https://github.com/NVIDIA/apex.git apex && cd apex && python setup.py install --cuda_ext --cpp_ext
-WORKDIR /home/
+WORKDIR /home
+RUN git clone https://github.com/NVIDIA/apex.git
+WORKDIR /home/apex
+RUN git checkout f3a960f
+RUN python setup.py install --cuda_ext --cpp_ext
+WORKDIR /semantic-segmentation/
 CMD bash predict_kitti.sh
